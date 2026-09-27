@@ -7,16 +7,20 @@ def salvar(alunos):
         escritor.writerows(alunos)
 
 def cadAluno():
+    # mat = matricula
     cpf = int(input("CPF: "))
     nome = input("Nome: ")
     dataNasc = input("Data de Nascimento: ")
     mat = int(input("Matricula: "))
     nota1 = float(input("Nota 1: "))
     nota2 = float(input("Nota 2: "))
+    faltas = int(input("Número de Faltas: "))
+    reprovadas = int(input("Número de Disciplinas Reprovadas: "))
+    
 
     with open("alunos.csv", "a", newline="", encoding="utf-8") as arquivo:
                 escritor = csv.writer(arquivo)
-                escritor.writerow([cpf, nome, dataNasc, mat, nota1, nota2])
+                escritor.writerow([cpf, nome, dataNasc, mat,  nota1, nota2, faltas, reprovadas])
 
 def listarAlunos():
     with open("alunos.csv", "r", newline="", encoding="utf-8") as arquivo:
@@ -79,13 +83,16 @@ def atualizarAluno(indice, alunos):
     mat_in = input(f"Nova Matrícula [{aluno[3]}]: ")
     mat = int(mat_in) if mat_in else aluno[3]
 
-    n1_in = input(f"Nova Nota 1 [{aluno[4]}]: ")
-    nota1 = float(n1_in) if n1_in else aluno[4]
+    freq_in = input(f"Numero de Faltas: [{aluno[4]}]")
+    freq = float(freq_in) if freq_in else aluno[4]
 
-    n2_in = input(f"Nova Nota 2 [{aluno[5]}]: ")
-    nota2 = float(n2_in) if n2_in else aluno[5]
+    n1_in = input(f"Nova Nota 1 [{aluno[5]}]: ")
+    nota1 = float(n1_in) if n1_in else aluno[5]
 
-    alunos[indice] = [aluno[0], nome, dataNasc, mat, nota1, nota2]
+    n2_in = input(f"Nova Nota 2 [{aluno[6]}]: ")
+    nota2 = float(n2_in) if n2_in else aluno[6]
+
+    alunos[indice] = [aluno[0], nome, dataNasc, mat, freq, nota1, nota2]
 
     salvar(alunos)
 

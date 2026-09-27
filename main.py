@@ -1,5 +1,6 @@
 import manterAluno
 acad = "on"
+import analise
 
 
 while (acad != "off"):
@@ -8,7 +9,7 @@ while (acad != "off"):
     | 1 - Cadastrar Aluno               
     | 2 - Lista de Alunos          
     | 3 - Gerenciar Aluno          
-    | 4 -          
+    | 4 - Analisar Aluno      
     | 5 -       
     | 6 - Finalizar Programa           
     ------------------------------------
@@ -21,6 +22,8 @@ while (acad != "off"):
             manterAluno.listarAlunos()
         case 3:
             manterAluno.gerenciarAluno()
+        case 4:
+            analise.proc_alunos()
         case 6:
             acad = "off"
         case _:
